@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRODUCTOS - Pitanza</title>
+    <link rel="icon" type="image/png" href="../IMAGENES/iconoConfiguracion.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styleForm.css">
+    <link rel="stylesheet" href="stylePregSeg.css">
+</head>
+<body>
+    <div class="fondo"></div>
+    <a id="botonCategorias" href="../CATEGORIAS/index.html">
+        Ir a Categorías
+    </a>
+    <main>
+        <h1>NUESTROS PRODUCTOS:</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button id="botonSumar">+</button>
+    </main>
+    <div class="overlay" id="overlay">
+        <p class="mensajeError" id="mensajeError"></p>
+        <div class="ventanaModal" id="formularioProducto">
+            <button id="botonCerrarModal">X</button>
+
+            <h2>NUEVO PRODUCTO:</h2>
+
+            <div class="campo">
+                <label for="inputNombre">Nombre:</label>
+                <input type="text" id="inputNombre">
+            </div>
+
+            <div class="campo">
+                <label for="inputPrecio">Precio:</label>
+                <input type="number" id="inputPrecio">
+            </div>
+
+            <div class="campo">
+                <label for="inputCategoria">Categoría:</label>
+                <select id="inputCategoria">
+                    <option value="" disabled selected>Selecciona La Categoria</option>
+                </select>
+            </div>
+
+            <button id="botonGuardar">Guardar</button>
+        </div>
+    </div>
+    <div class="overlaySeguridad" id="overlaySeguridad">
+        <div class="ventanaModalSeguridad" id="ConsultaEliminacion">
+            <p id="textoEliminacionProducto"></p>
+            <div class="botonesDecision">
+                <button class="botonDecision" id="botonNo">No</button>
+                <button class="botonDecision" id="botonSi">Si</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
