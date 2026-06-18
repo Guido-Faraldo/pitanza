@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitanza</title>
+    <link rel="icon" type="image/png" href="IMAGENES/iconoPrincipal.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styleModal.css">
+    <link rel="stylesheet" href="styleMoverMesa.css">
+</head>
+<body>
+    <div class="fondo"></div>
+    <a id="botonConfiguracion" href="PRODUCTOS/index.html" target="_blank">⚙️</a>
+
+    <div class="salones" id="SalonUno">
+        <h2 class="textoSalones">Salón 1</h2>
+        <div class="mesas" id="mesasUno">
+            <button class="mesa" data-id="1">1</button>
+            <button class="mesa" data-id="2">2</button>
+            <button class="mesa" data-id="3">3</button>
+            <button class="mesa" data-id="4">4</button>
+        </div>
+    </div>
+    <div class="salones" id="SalonDos">
+        <h2 class="textoSalones">Salón 2</h2>
+        <div class="mesas" id="mesasDos">
+            <button class="mesa" data-id="5">5</button>
+            <button class="mesa" data-id="6">6</button>
+        </div>
+        <div class="mesas" id="mesasDos2">
+            <button class="mesa" data-id="7">7</button>
+            <button class="mesa" data-id="8">8</button>
+            <button class="mesa" data-id="9">9</button>
+            <button class="mesa" data-id="10">10</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <div class="ventanaTotalComanda">
+            <div class="ventanaModalProductosPedido">
+                <button id="botonCerrarModal">X</button>
+                <div id="productosGeneral">
+                    <div id="categorias"></div>
+                    <div id="barraBuscadora">
+                        <div id="lupita">🔍</div>
+                        <input type="text" id="inputBusqueda" placeholder="Buscar producto...">
+                        <div id="resultadosBusqueda"></div>
+                    </div>
+                    <div id="productos"></div>
+                </div>
+                <div id="pedidosGeneral">
+                    <div id="pedidos"></div>
+                    <div id="total">
+                        <span>Total:</span>
+                        <span id="precioTotal">$0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="botones-mesa">
+                <button class="opciones-mesa" id="botonMoverMesa"><span>Mover mesa</span>➡️</button>
+                <button class="opciones-mesa" id="tachoBasura">🗑</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlayCambioMesa" id="CambiodeMesa">
+        <div class="ventanaCambioMesa">
+            <button id="botonCerrarModalCambioMesa">X</button>
+            <h2 id="tituloCambioMesa">¿A que mesa quieres mover la mesa actual?</h2>
+            <select id="inputCambioMesa">
+                    <option value="" disabled selected>Selecciona La Mesa</option>
+            </select>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
