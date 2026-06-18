@@ -1,0 +1,474 @@
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.733);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/*ESTA ES LA VENTANA TOTAL CON EL TACHO INCLUIDO*/
+.ventanaTotalComanda{
+    height: 90vh;
+    width: 90vw;
+    display: flex;
+    align-items: flex-end;
+}
+
+/*ESTA ES LA VENTANA CON LOS PRODUCTOS Y PEDIDOS (SIN EL TACHO)*/
+.ventanaModalProductosPedido {
+    height: 100%;
+    width: 100%;
+    border: 4px solid rgb(80, 39, 0);
+    border-radius: 15px;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/*VENTANA DE LA IZQUIERDA (PRODUCTOS Y CATEGORIA)*/
+#productosGeneral{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(199, 139, 71);
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
+    border-right: 3px solid black;
+}
+#productos::-webkit-scrollbar {
+    width: 11px;
+    padding: 16px;
+}
+#productos::-webkit-scrollbar-track {
+    background: #cacaca;
+    border-radius: 50px;
+}
+#productos::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+    border-radius: 50px;
+}
+/*BARRA DE CATEGORIAS*/
+#categorias {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 10px 0px;
+    border-bottom: 2px solid rgb(80, 39, 0);
+    overflow-y: hidden;
+}
+/*cada boton de categoria*/
+.categoria {
+    border: 2px solid rgb(80, 39, 0);
+    border-radius: 10px;
+    background-color: #f8be72;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: normal; 
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 20px 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: background-color 0.1s;
+    flex: 0 0 auto;
+}
+.categoria:hover{
+    background-color: #b16501;
+}
+.categoriaSeleccionada {
+    background-color: #834a00;
+    color: white;
+}
+
+/*BARRA DE BUSQUEDA*/
+#barraBuscadora {
+    display: flex;
+    padding: 10px;
+    border-bottom: 2px solid rgb(80, 39, 0);
+    position: relative;
+    gap: 10px;
+}
+#lupita{
+    font-size: 30px;
+    background-color: #88510a;
+    border-radius: 50%;
+}
+#inputBusqueda {
+    width: 100%;
+    padding: 0 13px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid rgb(80, 39, 0);
+    box-sizing: border-box;
+}
+#inputBusqueda:focus{
+    outline: 2px solid rgb(255, 255, 255);
+    border: 2px solid rgba(80, 39, 0, 0);
+}
+#resultadosBusqueda {
+    position: absolute;
+    top: 50px;
+    left: 64px;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    display: none;
+    border: none;
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.resultadoBusqueda {
+    padding: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(80, 39, 0);
+}
+.resultadoBusqueda:hover {
+    background-color: #fdb93a;
+}
+
+/*CUADRADO MUESTRA DE LOS PRODUCTOS*/
+#productos {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: rgb(94, 53, 0);
+}
+.producto {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f8be72;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid rgb(80, 39, 0);
+    transition: background-color 0.1s;
+}
+.producto:hover{
+    background-color: #c26f02;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+/*VENTANA DE LA DERECHA (PEDIDOS)*/
+#pedidosGeneral{
+    width: 50%;
+    height: 100%;
+    background-color: rgb(236, 236, 236);
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
+    display: flex;
+    flex-direction: column;
+}
+#pedidos{
+    flex: 1;
+    overflow-y: auto;
+}
+#pedidos::-webkit-scrollbar {
+    width: 11px;
+    padding: 16px;
+}
+#pedidos::-webkit-scrollbar-track {
+    background: #cacaca;
+    border-radius: 50px;
+}
+#pedidos::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+    border-radius: 50px;
+}
+/*Este es el producto con el nombre, botones y precio*/
+.filaPedido{
+    display: grid;
+    grid-template-columns: 1fr 140px 160px;
+    align-items: center;
+    gap: 0px;
+    min-height: 60px;
+    padding: 0px 10px;
+    border-bottom: 1px solid #a3a3a3;
+}
+.nombrePedido{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
+.controlesCantidad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.controlesCantidad button {
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    background-color: #9e9e9e;
+    transition: background-color 0.1s;
+}
+
+.mas:hover{
+    background-color: rgb(0, 168, 0);
+}
+.menos:hover{
+    background-color: rgb(206, 0, 0);
+}
+
+.precioPedido{
+    text-align: center;
+    font-weight: bold;
+    color: #9b5a00;
+}
+
+#total{
+    padding: 15px 60px;
+    font-size: 40px;
+    font-weight: bold;
+    border-top: 2px solid #ccc;
+    background-color: white;
+    border-bottom-right-radius: 11px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+/*BOTONES DE LA VENTANA MODAL*/
+.opciones-mesa{
+    width: 90px;
+    height: 70px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 20px;
+    bottom: 0;
+}
+
+#tachoBasura{
+    color: white;
+    font-size: 62px;
+    background-color: rgb(200, 60, 60);
+    padding-bottom: 90px;
+}
+#tachoBasura:hover{
+    background-color: rgb(80, 0, 0);
+}
+
+
+#botonMoverMesa{
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    font-size: 19px;
+    width: 90px;
+    height: 100px;
+    background-color: #f0f0f0;
+    padding-top: 14px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#botonMoverMesa:hover{
+    background-color: rgb(129, 129, 129);
+}
+
+/*BOTON PARA CERRAR LA VENTANA MODAL*/
+#botonCerrarModal {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 19px;
+    font-weight: bold;
+    color: rgb(54, 37, 0);
+}
+#botonCerrarModal:hover{
+    background-color: rgb(255, 82, 82);
+}
+
+@media (max-width: 1400px) {
+    .ventanaTotalComanda{
+        width: 80vw;
+    }
+}
+
+
+@media (max-width: 1300px) {
+    .ventanaTotalComanda{
+        width: 90vw;
+    }
+    .producto{
+        font-size: 11px;
+    }
+    .categoria{
+        font-size: 11px;
+    }
+    #inputBusqueda {
+        font-size: 11px;
+    }
+    #botonMoverMesa{
+        font-size: 12px;
+        width: 70px;
+        height: 80px;
+    }
+    .opciones-mesa{
+        width: 70px;
+        height: 35px;
+    }
+    #total{
+        font-size: 25px;
+    }
+    #tachoBasura{
+        font-size: 42px;
+        padding-top: 10px;
+        padding-bottom: 70px;
+    }
+    #resultadosBusqueda {
+        font-size: 11px;
+    }
+    .nombrePedido{
+        font-size: 11px;
+    }
+    .controlesCantidad{
+        font-size: 14px;
+    }
+    .controlesCantidad button {
+        width: 28px;
+        height: 28px;
+    }
+    .precioPedido{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .ventanaTotalComanda{
+        width: 85vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .producto{
+        font-size: 1.2rem;
+    }
+    .categoria{
+        font-size: 16px;
+    }
+    #inputBusqueda {
+        font-size: 16px;
+    }
+    #total{
+        font-size: 40px;
+    }
+    #tachoBasura{
+        font-size: 42px;
+        padding-top: 10px;
+        padding-bottom: 70px;
+    }
+    #resultadosBusqueda {
+        font-size: 16px;
+    }
+    .nombrePedido{
+        font-size: 15px;
+    }
+    .controlesCantidad button {
+        width: 35px;
+        height: 35px;
+    }
+    .precioPedido{
+        font-size: 16px;
+    }
+    .ventanaTotalComanda{
+        width: 80vw;
+        flex-direction: column;
+        overflow-y: auto;
+        align-items: center;
+    }
+    .ventanaModalProductosPedido{
+        width: 100%;
+        flex-direction: column;
+        border: none;
+    }
+    #productosGeneral{
+        width: 100%;
+        border-right: 1px solid rgb(80, 39, 0);
+        border-top-right-radius: 11px;
+        min-height: 500px;
+    }
+    #pedidosGeneral{
+        width: 100%;
+        border-radius: 0px;
+        min-height: 400px;
+        border-top: 4px solid black;
+    }
+    #botonCerrarModal {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+    #botonMoverMesa{
+        width: 50%;
+        font-size: 20px;
+    }
+    #tachoBasura{
+        width: 50%;
+        font-size: 50px;
+    }
+    /*BLOQUE |_|*/
+    .botones-mesa {
+        display: flex;
+        margin-top: 418px;
+        gap: 5px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .producto{
+        font-size: 11px;
+    }
+    .categoria{
+        font-size: 11px;
+    }
+    #inputBusqueda {
+        font-size: 11px;
+    }
+    #total{
+        font-size: 25px;
+    }
+    #resultadosBusqueda {
+        font-size: 11px;
+    }
+    .nombrePedido{
+        font-size: 11px;
+    }
+    .controlesCantidad{
+        font-size: 14px;
+    }
+    .controlesCantidad button {
+        width: 28px;
+        height: 28px;
+    }
+    .precioPedido{
+        font-size: 12px;
+    }
+}
